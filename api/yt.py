@@ -97,7 +97,3 @@ def api():
             "error": str(e),
             "message": "Error occurred! Contact developer - @Aotpy"
         }), 500
-
-# Vercel 需要这个
-if __name__ == "__main__":
-    app.run()
