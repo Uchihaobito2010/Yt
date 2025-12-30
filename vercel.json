@@ -1,0 +1,17 @@
+{
+  "functions": {
+    "api/yt.py": {
+      "maxDuration": 30
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/api/yt",
+      "destination": "/api/yt"
+    },
+    {
+      "source": "/",
+      "destination": "/api/yt"
+    }
+  ]
+}
