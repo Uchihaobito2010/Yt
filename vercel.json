@@ -1,18 +1,13 @@
 {
   "functions": {
     "api/yt.py": {
-      "runtime": "python3.9",
-      "handler": "app"
+      "runtime": "python3.9"
     }
   },
   "rewrites": [
     {
-      "source": "/api/(.*)",
-      "destination": "/api/yt"
-    },
-    {
-      "source": "/",
-      "destination": "/api/yt"
+      "source": "/(.*)",
+      "destination": "/api/yt.py"
     }
   ]
 }
