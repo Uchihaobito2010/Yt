@@ -1,7 +1,15 @@
 {
-  "functions": {
-    "api/index.py": {
-      "maxDuration": 30
+  "version": 2,
+  "builds": [
+    {
+      "src": "api/yt.py",
+      "use": "@vercel/python"
     }
-  }
+  ],
+  "routes": [
+    {
+      "src": "/api/yt",
+      "dest": "api/yt.py"
+    }
+  ]
 }
