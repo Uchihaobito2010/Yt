@@ -1,12 +1,13 @@
 {
   "functions": {
     "api/yt.py": {
-      "maxDuration": 30
+      "runtime": "python3.9",
+      "handler": "app"
     }
   },
   "rewrites": [
     {
-      "source": "/api/yt",
+      "source": "/api/(.*)",
       "destination": "/api/yt"
     },
     {
