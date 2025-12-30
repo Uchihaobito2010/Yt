@@ -1,15 +1,9 @@
 {
   "version": 2,
-  "builds": [
-    {
-      "src": "api/yt.py",
-      "use": "@vercel/python"
-    }
-  ],
   "routes": [
     {
       "src": "/api/yt",
-      "dest": "api/yt.py"
+      "dest": "/api/yt.py"
     }
   ]
 }
