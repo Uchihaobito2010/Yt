@@ -7,6 +7,7 @@ app = Flask(__name__)
 OWNER = "@Aotpy"
 CONTACT = "https://t.me/Aotpy"
 
+
 def shorten_url(url):
     if not url:
         return url
@@ -42,7 +43,7 @@ def yt_api():
     if not link:
         return jsonify({
             "status": 0,
-            "error": "Missing 'link' parameter",
+            "error": "Missing link parameter",
             "contact": CONTACT
         }), 400
 
@@ -79,16 +80,16 @@ def yt_api():
         if data.get("status") != 1:
             return jsonify({
                 "status": 0,
-                "error": "Failed to fetch video data",
+                "error": "Invalid response from source",
                 "contact": CONTACT
             }), 500
 
         info = data["data"]
-        results = []
+        downloads = []
 
         for res in info.get("resources", []):
             if res.get("download_mode") == "check_download":
-                results.append({
+                downloads.append({
                     "quality": res.get("quality"),
                     "format": res.get("format"),
                     "size": res.get("size"),
@@ -102,16 +103,9 @@ def yt_api():
                 "title": info.get("title"),
                 "duration": info.get("duration"),
                 "thumbnail": shorten_url(info.get("thumbnail")),
-                "downloads": results
+                "downloads": downloads
             }
         })
-
-    except requests.exceptions.Timeout:
-        return jsonify({
-            "status": 0,
-            "error": "Source timeout",
-            "contact": CONTACT
-        }), 504
 
     except Exception as e:
         return jsonify({
@@ -121,4 +115,5 @@ def yt_api():
         }), 500
 
 
+# 🔥 THIS LINE IS REQUIRED
 app = app
